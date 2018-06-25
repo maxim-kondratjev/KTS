@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static %}
+{% block extrastyles %}
+    <link rel="stylesheet" type="text/css" href="{% static "core/style.css" %}">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+{% endblock %}
+{% block title %}Кастомный чат{% endblock %}
+{% block content %}
+    <header>
+        <div class="head">
+            <div class="user">
+                {{ user.username }}
+            </div>
+        <span>
+            <a class="logout" href="{% url "core:logout" %}">
+                Выйти
+            </a>
+        </span>
+        </div>
+    </header>
+    <div class="chat">
+        {% for m in messages %}
+            {% include "core/message.html" with message=m %}
+        {% endfor %}
+    </div>
+    <form class="input" action="{% url "core:message_create" %}" method="post">
+        {% csrf_token %}
+        <i class="input__attach btn"></i>
+        <input class="text" type="text" autocomplete="off" value="" name="text" placeholder="Введите сообщение"/>
+        <button type="submit" class="input__send btn"></button>
+    </form>
+{% endblock %}
