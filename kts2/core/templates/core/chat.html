@@ -18,6 +18,9 @@
         </span>
         </div>
     </header>
+    <script src="{% static "core/jquery-3.3.1.min.js" %}"></script>
+    <script src="{% static "core/setup.js" %}"></script>
+    <script src="{% static "core/chat.js" %}"></script>
     <div class="chat">
         {% for m in messages %}
             {% include "core/message.html" with message=m %}
@@ -26,7 +29,7 @@
     <form class="input" action="{% url "core:message_create" %}" method="post">
         {% csrf_token %}
         <i class="input__attach btn"></i>
-        <input class="text" type="text" autocomplete="off" value="" name="text" placeholder="Введите сообщение"/>
+        <input class="text" id="message_input" type="text" autocomplete="off" value="" name="text" placeholder="Введите сообщение"/>
         <button type="submit" class="input__send btn"></button>
     </form>
 {% endblock %}

@@ -45,7 +45,7 @@ a {
 .chat {
     display: flex;
     height: calc(100% - 120px);
-    padding: 20px, 20px, 20px, 0px;
+    padding: 0px 40px;
     box-sizing: border-box;
     overflow: auto;
     flex-direction: column-reverse;

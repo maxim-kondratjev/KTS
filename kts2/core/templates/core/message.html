@@ -1,8 +1,8 @@
-<div class="message">
+<div class="message" data-id='{{ m.id }}'>
     <div class="message__author">
         <div class="message__avatar"></div>
-        <div class="message__name">{{ message.author.username }}</div>
-        <div class="message__time">{{ message.date }}</div>
+        <div class="message__name">{{ m.author }}</div>
+        <div class="message__time">{{ m.date }}</div>
     </div>
-    <div class="message__text">{{ message.text }}</div>
+    <div class="message__text">{{ m.text }}</div>
 </div>
