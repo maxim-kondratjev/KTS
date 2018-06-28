@@ -1,0 +1,138 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    background: white;
+    font-family: Roboto, sans-serif;
+    font-weight: 300;
+}
+
+header {
+    display: inline-block;
+    height: 60px;
+    width: 100%;
+    background: #10a0ff;
+}
+
+.head {
+    display: inline;
+    width: 20px;
+}
+
+.user {
+    display: inline-block;
+    width: 50%;
+    font-size: 20px;
+    margin: 20px;
+    color: #ffffff;
+}
+
+.logout{
+    float: right;
+    margin: 20px;
+    color: white;
+}
+
+.logout:hover {
+    color: white;
+}
+
+a {
+    text-decoration: none;
+}
+
+.chat {
+    display: flex;
+    height: calc(100% - 120px);
+    padding: 0px 40px;
+    box-sizing: border-box;
+    overflow: auto;
+    flex-direction: column-reverse;
+    border: 1px solid #f1f1f1;
+}
+
+.message {
+    padding: 10px 20px;
+    background: white;
+    font-size: 12px;
+    transition: background 0.2s linear;
+    border: 1px solid #d1d1d1;
+}
+
+.message__author {
+    margin-bottom: 10px;
+}
+
+.message__avatar {
+    display: inline-block;
+    margin-right: 10px;
+    border-radius: 50%;
+    background: url('../img/avatar.png') no-repeat center;
+    background-size: cover;
+    width: 30px;
+    height: 30px;
+    vertical-align: middle;
+}
+
+.message__time {
+    float: right;
+    color: #b2b2b2;
+    line-height: 30px;
+}
+
+.message__text {
+
+}
+
+.message__name {
+    vertical-align: middle;
+    display: inline-block;
+}
+
+.message:hover {
+    background: #f1f1f1;
+}
+
+.input {
+    height: 60px;
+    padding: 10px 40px;
+    box-sizing: border-box;
+    background-color: #f1f1f1;
+}
+
+.input__attach {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    vertical-align: middle;
+    background: url('../img/attach.ico') no-repeat center;
+    background-size: contain;
+    margin-right: 10px;
+}
+
+input {
+    outline: none;
+    border: none;
+    width: calc(100% - 40px - 50px);
+}
+
+.input__send {
+    display: inline-block;
+    vertical-align: middle;
+    width: 30px;
+    height: 30px;
+    background: url('../img/send.png') no-repeat center;
+    background-size: contain;
+    margin-left: 10px;
+}
+
+.btn {
+    cursor: pointer;
+    border-radius: 50%;
+    background-color: #f1f1f1;
+}
+
+.text {
+    background-color: #fafafa;
+}
