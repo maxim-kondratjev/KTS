@@ -21,15 +21,16 @@ $(document).ready(function() {
 
     setInterval(function () {
         const lastId = $('.message').first().data("id");
-
             $.ajax({
             type: 'GET',
             url: '/chat/messages/',
             data: {'last_id': lastId},
 
-
             success: (result) => {
-                if (result !== ""){
+                if (result.toString().indexOf('<title>') + 1) {
+                    window.location.replace('../chat/login');
+                }
+                else if (result !== "") {
                     $('.chat').prepend(result);
                 }
             }

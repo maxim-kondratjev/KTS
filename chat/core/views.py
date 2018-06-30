@@ -1,9 +1,7 @@
 from django.contrib import auth
-from django.contrib.auth import authenticate, login
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView, LogoutView
 from django.http import HttpResponseNotAllowed, HttpResponseBadRequest, HttpResponseRedirect, request, JsonResponse
-from django.shortcuts import render
 from django.template.loader import render_to_string
 from django.urls import reverse
 from django.views.generic import TemplateView, CreateView, FormView
@@ -27,6 +25,7 @@ class ChatView(LoginRequiredMixin, TemplateView):
         data['messages'] = messages
         return data
 
+
 class ChatLoginView(LoginView):
     template_name = 'core/login.html'
     form_class = LoginForm
@@ -47,12 +46,10 @@ class MessagesView(LoginRequiredMixin, TemplateView):
     def get_context_data(self, **kwargs):
         data = super().get_context_data(**kwargs)
         last_id = self.request.GET.get('last_id')
-
         if last_id:
             messages = Message.objects.filter(id__gt=last_id).order_by('-id')[:20]
         else:
             messages = Message.objects.all().order_by('-id')
-
         data['messages'] = messages
         return data
 
@@ -83,6 +80,7 @@ class MessageCreateView(CreateView):
             'date': self.object.date,
             'rendered_template': render_to_string('core/message.html', {'m': self.object}, self.request)
         })
+
 
 class ChatLogoutView(LogoutView):
     def get(self, request, *args, **kwargs):

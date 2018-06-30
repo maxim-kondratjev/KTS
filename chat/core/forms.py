@@ -1,9 +1,8 @@
-from time import ctime
-
 from django import forms
 from django.contrib.auth.forms import UsernameField, AuthenticationForm, UserCreationForm
 
 from core.models import Message
+
 
 class LoginForm(AuthenticationForm):
     username = UsernameField(
@@ -15,6 +14,7 @@ class LoginForm(AuthenticationForm):
         strip=False,
         widget=forms.PasswordInput(attrs={'class': 'form-control'}),
     )
+
 
 class MessageCreateForm(forms.ModelForm):
     class Meta:
@@ -32,6 +32,7 @@ class MessageCreateForm(forms.ModelForm):
         if commit:
             message.save()
         return message
+
 
 class ChatRegistrationForm(UserCreationForm):
     def __init__(self, *args, **kwargs):
