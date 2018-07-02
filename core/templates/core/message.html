@@ -1,0 +1,23 @@
+<div class = 'message' data-id='{{ m.id }}'>
+    <div class = 'message__author'>
+        {% if m.author not in users_avatars %}
+                    <div class = 'message__avatar'></div>
+                {% else %}
+                {% for avatar in avatars %}
+                    {% if m.author == avatar.username %}
+                        <div class = 'message__avatar' style="background: url('../media/{{avatar.avatar}}') no-repeat center; background-size: cover;"></div>
+                    {% endif %}
+                {% endfor %}
+                {% endif %}
+        <span class = 'message__name'> {{ m.author }} </span>
+        <span class = 'message__time'>{{ m.date }}</span>
+    </div>
+    <div class = 'message__text'> {{ m.avatar }} {{ m.text }}
+        {% if m.file %}
+            {% if m.text %}
+            <br/><br/>
+                {% endif %}
+        Файл: <a href="../media/{{m.file}}" download>{{m.file}}</a>
+            {% endif %}
+            </div>
+</div>

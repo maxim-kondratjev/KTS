@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load static %}
+{% block extrastyles %}
+    <link rel="stylesheet" type="text/css" href="{% static "core/css/chat.css" %}">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+{% endblock %}
+{% block title %}Кастомный чат{% endblock %}
+{% block content %}
+    <header>
+        <div class="head">
+            <div class="user">
+                {{ user.username }}
+            </div>
+            <span>
+            <a class="logout" href="{% url "core:logout" %}">
+                Выйти
+            </a>
+        </span>
+        </div>
+    </header>
+    <script src="{% static "core/js/jquery-3.3.1.min.js" %}"></script>
+    <script src="{% static "core/js/setup.js" %}"></script>
+    <script src="{% static "core/js/chat.js" %}"></script>
+    <div class = 'chat'>
+        {% include "core/messages.html" with message=m avatars=avatars users_avatars=users_avatars%}
+    </div>
+    <div class='attached_file'>
+        <span class='attached_file_span'>Загружен файл</span>
+    </div>
+    <form class="input" action="{% url "core:message_create" %}" id="send_message" method="post">
+        {% csrf_token %}
+        <input type='file' name='file' id='button_attach' class='input__attach'/>
+        <div class = 'input__attach'></div>
+        <input class="text" id="message_input" type="text" autocomplete="off" value="" name="text" value=""
+               placeholder="Введите сообщение"/>
+        <button type="submit" class="input__send btn" onclick="this.blur();"></button>
+    </form>
+{% endblock %}
